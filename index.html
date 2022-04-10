@@ -7,11 +7,29 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="./style.css">
 	<link rel="stylesheet" href="./buton.css">
-	<script src="./code.js" defer></script>
+	<link rel="stylesheet" href="./header.css" <script src="./code.js" defer>
+	</script>
 	<title>🎨 Etch-a-sketch</title>
 </head>
 
 <body>
+	<div id="header">
+		<svg xmlns=" http://www.w3.org/2000/svg">
+
+			<!-- filterUnits is required to prevent clipping the blur outside the viewBox -->
+
+			<filter id="motion-blur-filter" filterUnits="userSpaceOnUse">
+
+				<!-- We only want horizontal blurring. x: 100, y: 0 -->
+
+				<feGaussianBlur stdDeviation="100 0"></feGaussianBlur>
+			</filter>
+		</svg>
+
+		<!-- We use a custom attribute to set the text that the pseudo element should display and blur. In this case, we use the first character of the word. -->
+
+		<span filter-content="S">Etch A Sketch</span>
+	</div>
 	<div>
 		<button id="reset">Reset</button>
 	</div>
