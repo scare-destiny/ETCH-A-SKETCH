@@ -1,5 +1,6 @@
 let isDrawing = false;
 let activeColor = '#e885aa';
+let rainbowModeOn = false;
 let items;
 
 const container = document.getElementById("container");
@@ -57,20 +58,53 @@ function updateRows(items) {
 }
 
 function changeColor(element, color) {
-	element.style.backgroundColor = randomRGB();
+	if (rainbowModeOn) {
+		element.style.backgroundColor = randomRGB();
+		return;
+	}
+	element.style.backgroundColor = activeColor;
+}
+
+function toggleColorPicker() {
+	if (rainbowModeOn) {
+		document.getElementById('colorInput').style.visibility = 'hidden';
+		return;
+	}
+	document.getElementById('colorInput').style.visibility = 'visible';
 }
 
 function randomRGB() {
-	const randomColor = Math.floor(Math.random() *16777215).toString(16);
+	const randomColor = Math.floor(Math.random() * 16777215).toString(16);
 	return "#" + randomColor;
 }
 
-const button = document.querySelector('button');
+const resetBtn = document.getElementById('reset');
+resetBtn.addEventListener('click', removeGrid);
+resetBtn.addEventListener('click', askUser);
 
-button.addEventListener('click', removeGrid);
-button.addEventListener('click', askUser);
+const rnbwBtn = document.getElementById('rainbow');
+rnbwBtn.addEventListener('click', toggleColorMode);
+rnbwBtn.addEventListener('click', toggleColorPicker);
 
+const colorPicker = document.getElementById("colorPicker");
+colorPicker.addEventListener("input", updateActiveColor);
+colorPicker.addEventListener("change", updateActiveColor);
 
+function updateActiveColor(event) {
+	activeColor = event.target.value;
+}
+
+function toggleColorMode(event) {
+	let target = event.target;
+	if (rainbowModeOn) {
+		rainbowModeOn = false;
+		target.innerHTML = "Rainbow mode";
+		return;
+	}
+	rainbowModeOn = true;
+	target.innerHTML = "Pinky Color mode";
+	console.log(event.target.innerHTML, rainbowModeOn);
+}
 
 function askUser() {
 	let answer;

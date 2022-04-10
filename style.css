@@ -24,8 +24,14 @@
 #rainbow {
 	height: fit-content;
 	float:left;
-	margin: ;
+	margin: auto;
 
+}
+
+#supportingDiv {
+	display: flex;
+	align-items: center;
+	gap: 80px;
 }
 .footer {
 	height: 30px;
