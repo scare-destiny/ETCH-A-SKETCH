@@ -24,7 +24,7 @@ function removeGrid() {
 }
 
 document.addEventListener('DOMContentLoaded', e => {
-	makeGrid(8, 8)
+	makeGrid(16, 16)
 }
 )
 
