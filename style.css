@@ -23,7 +23,7 @@
 
 #rainbow {
 	height: fit-content;
-	float:left;
+	float: left;
 	margin: auto;
 
 }
@@ -33,6 +33,7 @@
 	align-items: center;
 	gap: 80px;
 }
+
 .footer {
 	height: 30px;
 }
