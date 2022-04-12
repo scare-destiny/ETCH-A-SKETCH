@@ -78,9 +78,9 @@ function randomRGB() {
 	return "#" + randomColor;
 }
 
-const resetBtn = document.getElementById('reset');
-resetBtn.addEventListener('click', removeGrid);
-resetBtn.addEventListener('click', askUser);
+const slider = document.getElementById('slider');
+slider.addEventListener("input", removeGrid);
+slider.addEventListener("input", processSlider);
 
 const rnbwBtn = document.getElementById('rainbow');
 rnbwBtn.addEventListener('click', toggleColorMode);
@@ -89,6 +89,11 @@ rnbwBtn.addEventListener('click', toggleColorPicker);
 const colorPicker = document.getElementById("colorPicker");
 colorPicker.addEventListener("input", updateActiveColor);
 colorPicker.addEventListener("change", updateActiveColor);
+
+
+function processSlider(e) {
+	makeGrid(e.target.value, e.target.value);
+}
 
 function updateActiveColor(event) {
 	activeColor = event.target.value;
@@ -102,7 +107,7 @@ function toggleColorMode(event) {
 		return;
 	}
 	rainbowModeOn = true;
-	target.innerHTML = "Pinky Color mode";
+	target.innerHTML = "Single Color mode";
 	console.log(event.target.innerHTML, rainbowModeOn);
 }
 
@@ -116,9 +121,4 @@ function askUser() {
 	makeGrid(answer, answer);
 }
 
-window.addEventListener('beforeunload', function (e) {
-	// Cancel the event
-	e.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
-	// Chrome requires returnValue to be set
-	e.returnValue = '';
-  });
+
