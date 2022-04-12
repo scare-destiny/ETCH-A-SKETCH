@@ -27,10 +27,6 @@ function removeGrid() {
 	}
 }
 
-document.addEventListener('DOMContentLoaded', e => {
-	makeGrid(50, 50)
-}
-)
 
 
 function updateRows(items) {
@@ -99,6 +95,7 @@ function processSlider(e) {
 }
 
 function updateActiveColor(event) {
+	console.log(event.target);
 	activeColor = event.target.value;
 }
 
@@ -111,17 +108,24 @@ function toggleColorMode(event) {
 	}
 	rainbowModeOn = true;
 	target.innerHTML = "Single Color mode";
-}
+};
 
-function generateArt(array) {
+function makeDrawing(array) {
 	for (const element of array) {
 		let div = document.getElementById(`${element}`);
 		div.style.backgroundColor = randomRGB();
 	}
 }
 
+function removeColors() {
+	div.style.backgroundColor = "";
+}
+
+
+
 window.addEventListener('DOMContentLoaded', (event) => {
-	generateArt(paintedDivs);
+	makeGrid(50, 50)
+	makeDrawing(paintedDivs);
 })
 
 
