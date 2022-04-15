@@ -111,14 +111,17 @@ function toggleColorMode(event) {
 };
 
 function makeDrawing(array) {
-	for (const element of array) {
-		let div = document.getElementById(`${element}`);
-		div.style.backgroundColor = randomRGB();
+	for (let i = 0; i < array.length; i++) {
+		setTimeout(function () {
+			paintDiv(array[i]);
+		}, i * 15)
 	}
 }
 
-function removeColors() {
-	div.style.backgroundColor = "";
+function paintDiv(div) {
+	div = document.getElementById(`${div}`);
+	div.style.backgroundColor = randomRGB();
+
 }
 
 
@@ -126,6 +129,10 @@ function removeColors() {
 window.addEventListener('DOMContentLoaded', (event) => {
 	makeGrid(50, 50)
 	makeDrawing(paintedDivs);
+	setTimeout(function () {
+		removeGrid();
+		makeGrid(50, 50);
+	}, 3000)
 })
 
 
